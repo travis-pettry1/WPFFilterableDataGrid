@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<LangVersion>latest</LangVersion>
+	<Title>WPF Filterable Data Grid</Title>
+	<Version>0.0.1</Version>
+	<Authors>Travis Pettry</Authors>
+	<Company>Apps By TAP </Company>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<Description>This package allows you to have a Data Grid with filterable columns</Description>
+	<Copyright>Apps By TAP</Copyright>
+	<PackageProjectUrl>https://github.com/travis-pettry1/WPFFilterableDataGrid</PackageProjectUrl>
+	<PackageReadmeFile></PackageReadmeFile>
+	<RepositoryUrl>https://github.com/travis-pettry1/WPFFilterableDataGrid</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageReleaseNotes>init release</PackageReleaseNotes>
+	<PackageTags>WPF; DataGrid</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Filter.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Filter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NaturalSort.Extension" Version="4.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
