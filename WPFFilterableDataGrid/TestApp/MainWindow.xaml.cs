@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace TestApp
 {
@@ -7,11 +8,11 @@ namespace TestApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<User> Users { get; set; } = new List<User>
+        public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>
         {
-            new User("John", "Smith"),
-            new User("Billy", "BoJangles"),
-            new User("Steven", "Clark")
+            new User("John", "Smith", Profession.SoftwareEngineer),
+            new User("Billy", "BoJangles", Profession.Carpenter),
+            new User("Steven", "Clark", Profession.Doctor)
         };
 
 
@@ -22,5 +23,18 @@ namespace TestApp
         }
     }
 
-    public record User(string FirstName, string LastName);
+    public record User(string FirstName, string LastName, Profession Profession);
+
+    public enum Profession
+    {
+        SoftwareEngineer,
+        Doctor,
+        Plumber,
+        Welder,
+        Electrician,
+        Carpenter,
+        Mechanic,
+        Teacher,
+        Lawyer,
+    }
 }

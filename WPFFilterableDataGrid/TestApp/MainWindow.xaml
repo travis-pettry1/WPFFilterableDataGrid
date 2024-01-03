@@ -9,10 +9,12 @@
         Title="MainWindow" Height="450" Width="800"
         x:Name="self">
     <Grid>
-        <filter:FilterableDataGrid ItemsSource="{Binding Users}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+        <filter:FilterableDataGrid ItemsSource="{Binding Users}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" SelectionMode="Single">
             <filter:FilterableDataGrid.Columns>
-                <filter:FilterableDataGridTextColumn Binding="{Binding FirstName}" Header="First Name" />
-                <filter:FilterableDataGridTextColumn Binding="{Binding LastName}" Header="Last Name" />
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="First Name" />
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Last Name" />
+                <filter:FilterableDataGridTextColumn Binding="{Binding Profession}" Header="Profession" />
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Last Name" />
             </filter:FilterableDataGrid.Columns>
         </filter:FilterableDataGrid>
     </Grid>

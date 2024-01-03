@@ -21,7 +21,7 @@
         </StackPanel>
 
         <TextBox x:Name="Search" Grid.Row="1" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextChanged="Search_TextChanged" 
-                Margin="3" />
+                Margin="3" Foreground="Black" />
         
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button x:Name="SelectAll" Content="Select All" Width="80" Height="25" Margin="3" Click="SelectAll_Click" />
@@ -29,8 +29,8 @@
             <Button x:Name="Reset" Content="Reset" Width="80" Height="25" Margin="3" Click="Reset_Click" />
         </StackPanel>
         
-        <ScrollViewer Grid.Row="3" Margin="0,5" VerticalScrollBarVisibility="Auto">
-            <ListView ItemsSource="{Binding FilteredOptions}" x:Name="FilterOptions" Margin="3">
+        <ScrollViewer Grid.Row="3" Margin="0,5" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+            <ListView ItemsSource="{Binding FilteredOptions, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="FilterOptions" Margin="3" VerticalAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -41,7 +41,7 @@
 
                             <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
 
-                            <Label Grid.Column="1" Content="{Binding Value}" />
+                            <Label Grid.Column="1" Content="{Binding Value}" Foreground="Black" />
 
                         </Grid>
                     </DataTemplate>

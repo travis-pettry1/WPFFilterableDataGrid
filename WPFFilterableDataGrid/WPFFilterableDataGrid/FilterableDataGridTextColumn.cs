@@ -27,6 +27,7 @@ namespace WPFFilterableDataGrid
         }
 
         public event Action<FilterOptionData, FilterableDataGridTextColumn> FilteredClicked;
+        private bool _headerIsInitialized;
 
         public FilterableDataGridTextColumn()
         {
@@ -46,35 +47,40 @@ namespace WPFFilterableDataGrid
         private FilterWindow _filterWindow;
 
 
-        public void UpdateHeader()
+        public void InitHeader()
         {
-            var sp = new StackPanel();
-            sp.Orientation = Orientation.Horizontal;
-            sp.Children.Add(new TextBlock { Text = Header.ToString() + "   " });
-            sp.Children.Add(_filterButton);
+            if(!_headerIsInitialized)
+            {
+                _headerIsInitialized = true;
 
-            _popup = new Popup();
-            _popup.Height = 300;
-            _popup.PlacementTarget = _filterButton;
+                var sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
+                sp.Children.Add(new TextBlock { Text = Header.ToString() + "   " });
+                sp.Children.Add(_filterButton);
 
-            Grid grid = new Grid();
-            grid.Background = new SolidColorBrush(Colors.White);
+                _popup = new Popup();
+                _popup.Height = 300;
+                _popup.PlacementTarget = _filterButton;
 
-            Border b = new Border();
-            b.BorderThickness = new Thickness(1);
-            b.BorderBrush = new SolidColorBrush(Colors.Black);
+                Grid grid = new Grid();
+                grid.Background = new SolidColorBrush(Colors.White);
 
-            _filterWindow = new FilterWindow();
-            _filterWindow.OnOkClicked = FilterWindowOkClicked;
+                Border b = new Border();
+                b.BorderThickness = new Thickness(1);
+                b.BorderBrush = new SolidColorBrush(Colors.Black);
 
-            b.Child = _filterWindow;
+                _filterWindow = new FilterWindow();
+                _filterWindow.OnOkClicked = FilterWindowOkClicked;
 
-            grid.Children.Add(b);
+                b.Child = _filterWindow;
 
-            _popup.Child = grid;
-            sp.Children.Add(_popup);
+                grid.Children.Add(b);
 
-            Header = sp;
+                _popup.Child = grid;
+                sp.Children.Add(_popup);
+
+                Header = sp;
+            }            
         }
 
         private void FilterWindowOkClicked(List<FilterOption> options)

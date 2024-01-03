@@ -36,7 +36,7 @@ namespace WPFFilterableDataGrid
                 {
                     var col = (FilterableDataGridTextColumn)x;
                     col.Parent = this;
-                    col.UpdateHeader();
+                    col.InitHeader();
                 }
             });
         }

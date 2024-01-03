@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using NaturalSort.Extension;
+using System.Runtime.CompilerServices;
 
 namespace WPFFilterableDataGrid
 {
@@ -64,16 +65,15 @@ namespace WPFFilterableDataGrid
 
         public FilterWindow(IEnumerable<FilterOption> items, string colName)
         {
-            Options = new ObservableCollection<FilterOption>(items.ToList());
             SearchText = "";
             ColName = colName;
             InitializeComponent();
-            
+            Options = new ObservableCollection<FilterOption>(items.ToList());
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void NotifyPropertyChanged(string prop = "")
+        protected void NotifyPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
